@@ -1,5 +1,5 @@
 ---
-title: "Apple SiliconのMacにCocoaPodsを導入してみる（2022/11改訂版）"
+title: "Apple SiliconのMacにCocoaPodsを導入してみる（2022/12改訂版）"
 emoji: "📲"
 type: "tech"
 topics:
