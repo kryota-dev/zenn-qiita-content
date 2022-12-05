@@ -1,5 +1,5 @@
 ---
-title: "Apple SiliconのMacにCocoaPodsを導入してみる"
+title: "Apple SiliconのMacにCocoaPodsを導入してみる（2022/11改訂版）"
 emoji: "📲"
 type: "tech"
 topics:
@@ -19,20 +19,62 @@ M1Macに買い替えて、久しぶりにSwift開発を行なっていたとこ�
 
 - Apple Silicon搭載のMac(M1で動作確認済)
 - Rosettaは使用しない。
-- Macにデフォルトでインストールされているrubyを使用。（rbenv不要）
+- ~~Macにデフォルトでインストールされているrubyを使用。（rbenv不要）~~  
+  →デフォルトのrubyでエラーが出たので、rbenvでrubyをインストールします。
+- Homebrewをインストール済み。
 - CocoaPodsを使用する予定のプロジェクトをXcodeにて作成済み。
 
 # インストール手順
 
-### CocoaPodsをインストール
+### rbenv, rubyをインストール
 
 ターミナルを起動し、以下のコマンドを実行します。
 
 ```bash
-sudo arch -x86_64 gem install cocoapods
+brew install rbenv ruby-build
 ```
 
-`ポイント：arch -x86_64の記述を忘れずに！`
+現在の最新安定版のrubyをインストールします。
+
+確認（2022/12/06時点: 3.1.3）
+https://www.ruby-lang.org/ja/downloads/
+
+インストール
+
+```bash
+rbenv install 3.1.3
+```
+
+グローバルに設定
+
+```bash
+rbenv global 3.1.3
+```
+
+zprofileに以下を追記
+
+```bash
+# Set rbenv
+[[ -d ~/.rbenv  ]] && \
+  export PATH=${HOME}/.rbenv/bin:${PATH} && \
+  eval "$(rbenv init -)"
+```
+
+sourceコマンドで反映
+
+```bash
+source ~/.zprofile
+```
+
+### CocoaPodsをインストール
+
+以下のコマンドを実行します。
+
+```bash
+sudo gem install cocoapods
+```
+
+~~`ポイント：arch -x86_64の記述を忘れずに！`~~
 
 次に、以下のコマンドを実行します。
 
@@ -82,15 +124,18 @@ Podfileを開き、編集します。（Vimを推奨）
 Podfileの編集を終えたら、以下のコマンドを実行します。
 
 ```bash
-arch -x86_64 pod install
+pod install
 ```
 
-`ポイント：arch -x86_64の記述を忘れずに！`
+~~`ポイント：arch -x86_64の記述を忘れずに！`~~
 
 場合によっては少し時間がかかります。
 
 # さいごに
 
-インストールコマンドを実行する際に```arch -x86_64```を付けるということを覚えておいていただければ、問題なく導入できるかと思います。（2021/11/10現在）
+~~インストールコマンドを実行する際に```arch -x86_64```を付けるということを覚えておいていただければ、問題なく導入できるかと思います。（2021/11/10現在）~~
 
-今後のアップデートでネイティブ対応されるかと思いますので、しばらくはこの方法で、Intelモジュールを使用してインストールしましょう。
+~~今後のアップデートでネイティブ対応されるかと思いますので、しばらくはこの方法で、Intelモジュールを使用してインストールしましょう。~~
+
+こちらの記事を参考にして、改訂しました。
+https://qiita.com/ryamate/items/e51c77fbabc2aec185fc
