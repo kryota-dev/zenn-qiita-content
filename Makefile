@@ -1,10 +1,10 @@
 init: update preview
 
 install:
-	npm install
+	pnpm install
 
 update:
-	npm install zenn-cli@latest
+	pnpm install zenn-cli@latest
 
 preview:
 	npx zenn preview -p 8000 --open
