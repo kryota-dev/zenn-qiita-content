@@ -23,5 +23,9 @@
   },
   "devDependencies": {
     "cspell": "^7.3.2"
+  },
+  "volta": {
+    "node": "18.18.2",
+    "pnpm": "8.9.2"
   }
 }
