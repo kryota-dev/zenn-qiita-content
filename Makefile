@@ -1,34 +1,72 @@
+bi := bun install
+bxz := bunx zenn
+bxq := bunx qiita
+q-dir := ./qiita/
+q-credential := --credential $(q-dir)
+q-config := --config $(q-dir)
+q-root := --root $(q-dir)
+
 init: update preview
 
 install:
-	bun install
+	$(bi)
 
-update:
-	bun install zenn-cli@latest
+# FIXME: コマンドの順序をアルファベット順にする（ChatGPTのお仕事）
+# Zenn scripts
+z/update:
+	$(bi) zenn-cli@latest
 
-preview:
-	bunx zenn preview -p 8000 --open
+z/preview:
+	$(bxz) preview -p 8000 --open
 
-new/article:
-	bunx zenn new:article
+z/new/article:
+	$(bxz) new:article
 
-new/book:
-	bunx zenn new:book
+z/new/book:
+	$(bxz) new:book
 
-list/articles:
-	bunx zenn list:articles
+z/list/articles:
+	$(bxz) list:articles
 
-list/books:
-	bunx zenn list:books
+z/list/books:
+	$(bxz) list:books
 
-version:
-	bunx zenn -v
+z/version:
+	$(bxz) -v
 
-help:
-	bunx zenn -h
+z/help:
+	$(bxz) -h
 
-guide/cli:
+z/guide/cli:
 	open https://zenn.dev/zenn/articles/zenn-cli-guide
 
-guide/md:
+z/guide/md:
 	open https://zenn.dev/zenn/articles/markdown-guide
+
+# Qiita scripts
+q/update:
+	$(bi) @qiita/qiita-cli@latest
+
+q/preview:
+	$(bxq) preview $(q-credential) $(q-config) $(q-root)
+
+q/new:
+	$(bxq) new $(title) --root $(q-dir)
+
+q/publish:
+	$(bxq) publish $(title) $(q-root)
+
+q/publish/all:
+	$(bxq) publish --all
+
+q/login:
+	$(bxq) login $(q-credential) $(q-config)
+
+q/version:
+	$(bxq) version
+
+q/help:
+	$(bxq) help
+
+q/pull:
+	$(bxq) pull

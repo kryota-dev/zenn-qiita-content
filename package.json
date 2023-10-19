@@ -19,9 +19,8 @@
   },
   "homepage": "https://github.com/ryota-k0827/zenn-content#readme",
   "dependencies": {
-    "zenn-cli": "^0.1.144"
-  },
-  "devDependencies": {
+    "zenn-cli": "^0.1.144",
+    "@qiita/qiita-cli": "^1.3.0",
     "cspell": "^7.3.2"
   },
   "volta": {
