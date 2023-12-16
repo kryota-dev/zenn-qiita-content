@@ -1,7 +1,7 @@
 // CSpellの辞書に存在しない単語を自動で一括追加するスクリプト
-const { execSync } = require('child_process')
-const fs = require('fs')
-const path = require('path')
+import { execSync } from 'child_process'
+import fs from 'fs'
+import path from 'path'
 
 // 1. Get the unknown words
 const result = execSync('bun check:spell 2>&1 | grep "Unknown word" | awk \'{print $NF}\'', { encoding: 'utf8' })
