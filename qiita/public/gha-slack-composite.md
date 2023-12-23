@@ -1,9 +1,13 @@
 ---
-title: "GitHub Actionsで再利用可能なSlack通知アクションを作ってみた"
-emoji: "🔔"
-type: "tech" # tech: 技術記事 / idea: アイデア
-topics: ['githubactions', 'slack']
-published: true
+title: GitHub Actionsで再利用可能なSlack通知アクションを作ってみた
+private: false
+tags:
+  - githubactions
+  - slack
+updated_at: '2023-12-23T15:44:04+09:00'
+id: null
+organization_url_name: dip-net
+slide: false
 ---
 
 ## はじめに
@@ -418,11 +422,11 @@ uses: ./.github/actions/slack/post-message/success
 
 PRのDraftを作成した際に投稿されるスレッドに投稿しています。
 
-![](/images/articles/gha-slack-composite/image1.png)
+![](https://raw.githubusercontent.com/ryota-k0827/zenn-content/main/images/articles/gha-slack-composite/image1.png)
 
 ### ワークフローの実行失敗時にSlackに通知するAction
 
-![](/images/articles/gha-slack-composite/image2.png)
+![](https://raw.githubusercontent.com/ryota-k0827/zenn-content/main/images/articles/gha-slack-composite/image2.png)
 
 ## まとめ
 

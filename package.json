@@ -34,5 +34,8 @@
   "description": "",
   "homepage": "https://github.com/ryota-k0827/zenn-qiita-content#readme",
   "keywords": [],
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "moment-timezone": "^0.5.43"
+  }
 }

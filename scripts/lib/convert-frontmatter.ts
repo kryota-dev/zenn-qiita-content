@@ -1,6 +1,7 @@
 import { existsSync, readFileSync } from 'fs'
 import matter from 'gray-matter'
 import yaml from 'js-yaml'
+import moment from 'moment-timezone'
 
 export function convertFrontmatter(outputPath?: string) {
   return function _convertFrontmatter(inputContent: string) {
@@ -22,11 +23,11 @@ export function convertFrontmatter(outputPath?: string) {
     // Add new fields
     if (outputPath && existsSync(outputPath)) {
       const existingData = matter(readFileSync(outputPath, 'utf8')).data
-      dataCloned.updated_at = existingData.updated_at || new Date().toISOString()
+      dataCloned.updated_at = existingData.updated_at || moment().tz('Asia/Tokyo').format()
       dataCloned.id = existingData.id || null
       dataCloned.organization_url_name = existingData.organization_url_name || null
     } else {
-      dataCloned.updated_at = new Date().toISOString()
+      dataCloned.updated_at = moment().tz('Asia/Tokyo').format()
       dataCloned.id = null
       dataCloned.organization_url_name = null
     }
