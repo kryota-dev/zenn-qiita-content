@@ -6,24 +6,22 @@ q-credential := --credential $(q-dir)
 q-config := --config $(q-dir)
 q-root := --root $(q-dir)
 
+
 init: install z/update q/update
 
 install:
 	$(bi)
 
-# FIXME: コマンドの順序をアルファベット順にする（ChatGPTのお仕事）
+
 # Zenn scripts
-z/update:
-	$(bi) zenn-cli@latest
+z/guide/cli:
+	open https://zenn.dev/zenn/articles/zenn-cli-guide
 
-z/preview:
-	$(bxz) preview -p 8000 --open
+z/guide/md:
+	open https://zenn.dev/zenn/articles/markdown-guide
 
-z/new/article:
-	$(bxz) new:article
-
-z/new/book:
-	$(bxz) new:book
+z/help:
+	$(bxz) -h
 
 z/list/articles:
 	$(bxz) list:articles
@@ -31,27 +29,34 @@ z/list/articles:
 z/list/books:
 	$(bxz) list:books
 
+z/new/article:
+	$(bxz) new:article
+
+z/new/book:
+	$(bxz) new:book
+
+z/preview:
+	$(bxz) preview -p 8000 --open
+
+z/update:
+	$(bi) zenn-cli@latest
+
 z/version:
 	$(bxz) -v
 
-z/help:
-	$(bxz) -h
-
-z/guide/cli:
-	open https://zenn.dev/zenn/articles/zenn-cli-guide
-
-z/guide/md:
-	open https://zenn.dev/zenn/articles/markdown-guide
 
 # Qiita scripts
-q/update:
-	$(bi) @qiita/qiita-cli@latest
+q/help:
+	$(bxq) help
 
-q/preview:
-	$(bxq) preview $(q-credential) $(q-config) $(q-root)
+q/login:
+	$(bxq) login $(q-credential) $(q-config)
 
 q/new:
 	$(bxq) new $(title) --root $(q-dir)
+
+q/preview:
+	$(bxq) preview $(q-credential) $(q-config) $(q-root)
 
 q/publish:
 	$(bxq) publish $(title) $(q-root)
@@ -59,14 +64,11 @@ q/publish:
 q/publish/all:
 	$(bxq) publish --all
 
-q/login:
-	$(bxq) login $(q-credential) $(q-config)
+q/pull:
+	$(bxq) pull
+
+q/update:
+	$(bi) @qiita/qiita-cli@latest
 
 q/version:
 	$(bxq) version
-
-q/help:
-	$(bxq) help
-
-q/pull:
-	$(bxq) pull
