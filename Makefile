@@ -6,7 +6,7 @@ q-credential := --credential $(q-dir)
 q-config := --config $(q-dir)
 q-root := --root $(q-dir)
 
-init: update preview
+init: install z/update q/update
 
 install:
 	$(bi)
